@@ -96,6 +96,8 @@ jQuery(function($) {
 <?php if  (_USER_ACCESS_LEVEL_VIEW == "1" && (_USER_ACCESS_LEVEL_UPDATE == "1" || _USER_ACCESS_LEVEL_DETAIL == "1")) { ?>
 function load_data()
 {
+	var url = new URL(window.location.href);
+
     $.ajax({
 		type: "POST",
         url : module_path+'/get_detail_data',
@@ -144,8 +146,8 @@ function load_data()
 					$('select#kec_tempatidentitas').val(data.kec_id_identitas).trigger('change.select2');
 					$('select#kota_tempatidentitas').val(data.kabkota_id_identitas).trigger('change.select2');
 					$('select#kel_tempatidentitas').val(data.kel_id_identitas).trigger('change.select2');
-					$('span.file_foto_bpjs').html('<img src="http://localhost/_13_simrs/uploads/pasien/'+data.attachment_bpjs+'" width="200" height="200" >');
-					$('span.file_foto_identitas').html('<img src="http://localhost/_13_simrs/uploads/pasien/'+data.attachment_identitas+'" width="200" height="200" >');
+					$('span.file_foto_bpjs').html('<img src="'+url+'/uploads/pasien/'+data.attachment_bpjs+'" width="200" height="200" >');
+					$('span.file_foto_identitas').html('<img src="'+url+'/uploads/pasien/'+data.attachment_identitas+'" width="200" height="200" >');
 
 					$.uniform.update();
 					$('#mfdata').text('Update');
@@ -188,8 +190,8 @@ function load_data()
 					$('span.nohp_pasangan').html(data.hp_pasangan);
 					$('span.nohp_penanggung').html(data.hp_penanggung_jawab);
 					$('span.prov_identitas').html(data.provinsi_identitas);
-					$('span.foto_bpjs').html('<img src="http://localhost/_13_simrs/uploads/pasien/'+data.attachment_bpjs+'" width="200" height="200" >');
-					$('span.foto_identitas').html('<img src="http://localhost/_13_simrs/uploads/pasien/'+data.attachment_identitas+'" width="200" height="200" >');
+					$('span.foto_bpjs').html('<img src="'+url+'/uploads/pasien/'+data.attachment_bpjs+'" width="200" height="200" >');
+					$('span.foto_identitas').html('<img src="'+url+'/uploads/pasien/'+data.attachment_identitas+'" width="200" height="200" >');
 					$('#modal-view-data').modal('show');
 				}
 			} else {
